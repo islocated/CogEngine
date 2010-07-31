@@ -20,6 +20,8 @@ static Engine * _sharedEngine = nil;
 @synthesize animating;
 @dynamic animationFrameInterval;
 
+@synthesize dt;
+
 + (Engine *)sharedEngine {
 	if (!_sharedEngine) {
 		_sharedEngine = [[Engine alloc] init];
@@ -114,8 +116,6 @@ static Engine * _sharedEngine = nil;
 	//Calculate time
 	NSLog(@"timer" );
 	
-	float dt = 0;
-	
 	if (displayLinkSupported) {
 		NSLog(@"time elapsed: %f", [displayLink duration]);
 		
@@ -126,12 +126,12 @@ static Engine * _sharedEngine = nil;
 		[animationTimer timeInterval];
 	}
 	
-	[currentScene update:dt];
+	[currentScene visit:@selector(update:) withObject:[NSNumber numberWithFloat:dt]];
 	
 	
 	//Render
 	[glView beginRender:sender];
-	[currentScene render:dt];
+	[currentScene visit:@selector(render:) withObject:[NSNumber numberWithFloat:dt]];
 	//[glView drawView:sender];
 	[glView endRender:sender];
 }

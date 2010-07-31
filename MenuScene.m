@@ -13,7 +13,7 @@
 
 @implementation MenuScene
 
-- (void)render:(float)dt {
+- (void)render:(NSObject *)dt {
 	NSLog(@"Menu Scene render");
 	
 	
@@ -21,9 +21,9 @@
 	
     static const GLfloat squareVertices[] = {
         -0.5f, -0.33f,
-		0.7f, -0.33f,
+		0.5f, -0.33f,
         -0.5f,  0.33f,
-		0.7f,  0.33f,
+		0.5f,  0.33f,
     };
 	
     static const GLubyte squareColors[] = {

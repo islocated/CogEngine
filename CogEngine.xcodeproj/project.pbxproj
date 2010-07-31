@@ -25,6 +25,8 @@
 		BAF0DA6B11FC9D6E00D95E32 /* Engine.m in Sources */ = {isa = PBXBuildFile; fileRef = BAF0DA6A11FC9D6E00D95E32 /* Engine.m */; };
 		BAF0DC3611FE929300D95E32 /* Scene.m in Sources */ = {isa = PBXBuildFile; fileRef = BAF0DC3511FE929300D95E32 /* Scene.m */; };
 		BAF0DC8C11FF945900D95E32 /* MenuScene.m in Sources */ = {isa = PBXBuildFile; fileRef = BAF0DC8B11FF945900D95E32 /* MenuScene.m */; };
+		BAF0DCC81202645300D95E32 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = BAF0DCC71202645300D95E32 /* icon.png */; };
+		BAF0DCCD12026DCB00D95E32 /* CoreObject.m in Sources */ = {isa = PBXBuildFile; fileRef = BAF0DCCC12026DCB00D95E32 /* CoreObject.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -58,6 +60,9 @@
 		BAF0DC3511FE929300D95E32 /* Scene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Scene.m; sourceTree = "<group>"; };
 		BAF0DC8A11FF945900D95E32 /* MenuScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuScene.h; sourceTree = "<group>"; };
 		BAF0DC8B11FF945900D95E32 /* MenuScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuScene.m; sourceTree = "<group>"; };
+		BAF0DCC71202645300D95E32 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
+		BAF0DCCB12026DCB00D95E32 /* CoreObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreObject.h; sourceTree = "<group>"; };
+		BAF0DCCC12026DCB00D95E32 /* CoreObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreObject.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -147,6 +152,7 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				BAF0DCC71202645300D95E32 /* icon.png */,
 				28AD733E0D9D9553002E5188 /* MainWindow.xib */,
 				8D1107310486CEB800E47090 /* CogEngine-Info.plist */,
 			);
@@ -171,6 +177,8 @@
 				BAF0DA6A11FC9D6E00D95E32 /* Engine.m */,
 				BAF0DC3411FE929300D95E32 /* Scene.h */,
 				BAF0DC3511FE929300D95E32 /* Scene.m */,
+				BAF0DCCB12026DCB00D95E32 /* CoreObject.h */,
+				BAF0DCCC12026DCB00D95E32 /* CoreObject.m */,
 			);
 			name = Engine;
 			sourceTree = "<group>";
@@ -238,6 +246,7 @@
 				2514C27B10084DCA00A42282 /* Shader.fsh in Resources */,
 				2514C27C10084DCA00A42282 /* Shader.vsh in Resources */,
 				28AD733F0D9D9553002E5188 /* MainWindow.xib in Resources */,
+				BAF0DCC81202645300D95E32 /* icon.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -264,6 +273,7 @@
 				BAF0DA6B11FC9D6E00D95E32 /* Engine.m in Sources */,
 				BAF0DC3611FE929300D95E32 /* Scene.m in Sources */,
 				BAF0DC8C11FF945900D95E32 /* MenuScene.m in Sources */,
+				BAF0DCCD12026DCB00D95E32 /* CoreObject.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

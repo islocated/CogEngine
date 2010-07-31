@@ -11,12 +11,21 @@
 
 @implementation Scene
 
-- (void)update:(float)dt{
-	NSLog(@"Update scene");
+- (id)init
+{
+	if ((self = [super init])) {
+		visible = YES;
+	}
+	
+	return self;
 }
 
-- (void)render:(float)dt{
-	NSLog(@"Render scene");
+- (void)update:(NSObject *)dt{
+	NSLog(@"Scene Update");
+}
+
+- (void)render:(NSObject *)dt{
+	NSLog(@"Scene Render");
 }
 
 @end

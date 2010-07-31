@@ -7,13 +7,10 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "CoreObject.h"
 
-
-@interface Scene : NSObject {
-
+@interface Scene : CoreObject {
+	
 }
-
-- (void)update:(float)dt;
-- (void)render:(float)dt;
 
 @end

@@ -25,6 +25,8 @@
     NSTimer *animationTimer;
 	
 	
+	float dt;
+	
 	Scene *currentScene;
 }
 
@@ -40,6 +42,8 @@
 
 @property (readonly, nonatomic, getter=isAnimating) BOOL animating;
 @property (nonatomic) NSInteger animationFrameInterval;
+
+@property (readonly) float dt;
 
 
 @end
