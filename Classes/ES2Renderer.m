@@ -8,8 +8,12 @@
 
 #import "ES2Renderer.h"
 
+#import "Matrix.h"
+
 // uniform index
 enum {
+	UNIFORM_MODELVIEWMATRIX,
+	UNIFORM_PROJECTIONMATRIX,
     UNIFORM_TRANSLATE,
     NUM_UNIFORMS
 };
@@ -72,10 +76,51 @@ enum {
 	
 	// Use shader program
     glUseProgram(program);
+	
+	//TODO:Move this to initial setup
+	glFrontFace(GL_CW);
+	glCullFace(GL_BACK);
+	glEnable(GL_CULL_FACE);
+	
+	//static const GLfloat projection[4][4] = {{1,0,0,0}, {0,1,0,0}, {0,0,1,0}, {0,0,0,1}};
+	
+	Matrix *projection = [[Matrix alloc] init];
+	float fov=60.0f; // in degrees
+	float aspect=(float)backingWidth/(float)backingHeight; //1.3333f;
+	float znear=1.0f;
+	float zfar=100.0f;
+	
+	[projection perspectiveWithFOVY:fov aspect:aspect nearZ:znear farZ:zfar];
+	//[projection perspectiveWithFOV:fov aspect:aspect ZNear:znear ZFar:zfar];
+	
+	/*
+	float left = -2.0f;
+	float right = 2.0f;
+	float bottom = -2.0f;
+	float top = 2.0f;
+	float nearZ = -2.0f;
+	float farZ = 2.0f;
+	*/
+	//[projection orthoWithLeft:left right:right bottom:bottom top:top nearZ:nearZ farZ:farZ];
+	glUniformMatrix4fv(uniforms[UNIFORM_PROJECTIONMATRIX], 1, FALSE, &[projection getMatrix].mat[0][0]);
+	[projection release];
+	
+	//static const GLfloat model[4][4] = {{1,0,0,0}, {0,1,0,0}, {0,0,1,0}, {0,0,0,1}};
+	
+	static float transx = 3.0f;
+	transx += 0.025f;
+	
+	//TODO:Model matrix needs to move to the sprite
+	Matrix *model = [[Matrix alloc] init];
+	//Z component is the camera coordinate, so we move it negatively to move the model positively
+	[model translateWithX:-0.0f Y:-0.0f Z:-transx];
+	glUniformMatrix4fv(uniforms[UNIFORM_MODELVIEWMATRIX], 1, FALSE, &[model getMatrix].mat[0][0]);
+	[model release];
 }
 
 - (void)render
 {
+	/*
     // Replace the implementation of this method to do your own custom drawing
 
     static const GLfloat squareVertices[] = {
@@ -116,6 +161,8 @@ enum {
 
     // Draw
     glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
+	 
+	 */
 }
 
 - (void)endRender
@@ -271,6 +318,9 @@ enum {
 
     // Get uniform locations
     uniforms[UNIFORM_TRANSLATE] = glGetUniformLocation(program, "translate");
+	
+	uniforms[UNIFORM_MODELVIEWMATRIX] = glGetUniformLocation(program, "cog_ModelViewMatrix");
+	uniforms[UNIFORM_PROJECTIONMATRIX] = glGetUniformLocation(program, "cog_ProjectionMatrix");
 
     // Release vertex and fragment shaders
     if (vertShader)

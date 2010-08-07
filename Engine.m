@@ -128,11 +128,9 @@ static Engine * _sharedEngine = nil;
 	
 	[currentScene visit:@selector(update:) withObject:[NSNumber numberWithFloat:dt]];
 	
-	
 	//Render
 	[glView beginRender:sender];
 	[currentScene visit:@selector(render:) withObject:[NSNumber numberWithFloat:dt]];
-	//[glView drawView:sender];
 	[glView endRender:sender];
 }
 

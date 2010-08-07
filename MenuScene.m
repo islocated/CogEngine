@@ -7,16 +7,26 @@
 //
 
 #import "MenuScene.h"
-
-#import <OpenGLES/ES2/gl.h>
-#import <OpenGLES/ES2/glext.h>
+#import "Sprite.h"
 
 @implementation MenuScene
+
+- (id)init
+{
+	if ((self = [super init])) {
+		
+		Sprite *sprite = [[[Sprite alloc] init] autorelease];
+		[self addChild:sprite];
+		sprite.visible = YES;
+	}
+	
+	return self;
+}
 
 - (void)render:(NSObject *)dt {
 	NSLog(@"Menu Scene render");
 	
-	
+	/*
 	// Replace the implementation of this method to do your own custom drawing
 	
     static const GLfloat squareVertices[] = {
@@ -47,6 +57,7 @@
 	
     // Draw
     glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
+	 */
 }
 
 @end

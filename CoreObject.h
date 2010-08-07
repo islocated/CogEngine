@@ -8,6 +8,9 @@
 
 #import <Foundation/Foundation.h>
 
+#import <OpenGLES/ES2/gl.h>
+#import <OpenGLES/ES2/glext.h>
+
 #define INITIAL_CAPACITY 10
 
 @interface CoreObject : NSObject {

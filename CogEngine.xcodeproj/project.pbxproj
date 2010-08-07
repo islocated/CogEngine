@@ -19,6 +19,8 @@
 		28FD14FE0DC6FC130079059D /* EAGLView.m in Sources */ = {isa = PBXBuildFile; fileRef = 28FD14FD0DC6FC130079059D /* EAGLView.m */; };
 		28FD15000DC6FC520079059D /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28FD14FF0DC6FC520079059D /* OpenGLES.framework */; };
 		28FD15080DC6FC5B0079059D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28FD15070DC6FC5B0079059D /* QuartzCore.framework */; };
+		BACE3A7E12046D4A002183B1 /* Sprite.m in Sources */ = {isa = PBXBuildFile; fileRef = BACE3A7D12046D4A002183B1 /* Sprite.m */; };
+		BACE3BF112051AAD002183B1 /* Matrix.m in Sources */ = {isa = PBXBuildFile; fileRef = BACE3BF012051AAD002183B1 /* Matrix.m */; };
 		BAF0DA4311FC9C0200D95E32 /* Game.m in Sources */ = {isa = PBXBuildFile; fileRef = BAF0DA4211FC9C0200D95E32 /* Game.m */; };
 		BAF0DA4F11FC9C6000D95E32 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; };
 		BAF0DA5011FC9C6900D95E32 /* Game.m in Sources */ = {isa = PBXBuildFile; fileRef = BAF0DA4211FC9C0200D95E32 /* Game.m */; };
@@ -50,6 +52,10 @@
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		32CA4F630368D1EE00C91783 /* CogEngine_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CogEngine_Prefix.pch; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* CogEngine-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "CogEngine-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
+		BACE3A7C12046D4A002183B1 /* Sprite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Sprite.h; sourceTree = "<group>"; };
+		BACE3A7D12046D4A002183B1 /* Sprite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Sprite.m; sourceTree = "<group>"; };
+		BACE3BEF12051AAD002183B1 /* Matrix.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Matrix.h; sourceTree = "<group>"; };
+		BACE3BF012051AAD002183B1 /* Matrix.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Matrix.m; sourceTree = "<group>"; };
 		BAF0DA4111FC9C0200D95E32 /* Game.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Game.h; sourceTree = "<group>"; };
 		BAF0DA4211FC9C0200D95E32 /* Game.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Game.m; sourceTree = "<group>"; };
 		BAF0DA4911FC9C2100D95E32 /* Game.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Game.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -124,6 +130,7 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
+				BACE3BEB12051A13002183B1 /* Common */,
 				BAF0DC8911FF943D00D95E32 /* Engine */,
 				080E96DDFE201D6D7F000001 /* Classes */,
 				2514C27610084DB600A42282 /* Shaders */,
@@ -170,6 +177,15 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		BACE3BEB12051A13002183B1 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				BACE3BEF12051AAD002183B1 /* Matrix.h */,
+				BACE3BF012051AAD002183B1 /* Matrix.m */,
+			);
+			name = Common;
+			sourceTree = "<group>";
+		};
 		BAF0DC8911FF943D00D95E32 /* Engine */ = {
 			isa = PBXGroup;
 			children = (
@@ -179,6 +195,8 @@
 				BAF0DC3511FE929300D95E32 /* Scene.m */,
 				BAF0DCCB12026DCB00D95E32 /* CoreObject.h */,
 				BAF0DCCC12026DCB00D95E32 /* CoreObject.m */,
+				BACE3A7C12046D4A002183B1 /* Sprite.h */,
+				BACE3A7D12046D4A002183B1 /* Sprite.m */,
 			);
 			name = Engine;
 			sourceTree = "<group>";
@@ -274,6 +292,8 @@
 				BAF0DC3611FE929300D95E32 /* Scene.m in Sources */,
 				BAF0DC8C11FF945900D95E32 /* MenuScene.m in Sources */,
 				BAF0DCCD12026DCB00D95E32 /* CoreObject.m in Sources */,
+				BACE3A7E12046D4A002183B1 /* Sprite.m in Sources */,
+				BACE3BF112051AAD002183B1 /* Matrix.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
