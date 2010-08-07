@@ -7,16 +7,18 @@
 //
 
 #import "CoreObject.h"
-
+#import "Matrix.h"
 
 @implementation CoreObject
 
 @synthesize visible;
+@synthesize transform;
 
 - (id)init
 {
 	if ((self = [super init])) {
 		children = [[NSMutableArray alloc] initWithCapacity:INITIAL_CAPACITY];
+		transform = [[Matrix alloc] init];
 		
 		visible = NO;
 	}
@@ -27,6 +29,7 @@
 - (void)dealloc
 {
 	[children release];
+	[transform release];
 	
 	[super dealloc];
 }

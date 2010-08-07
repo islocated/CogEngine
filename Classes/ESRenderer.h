@@ -11,7 +11,11 @@
 #import <OpenGLES/EAGL.h>
 #import <OpenGLES/EAGLDrawable.h>
 
+@class Matrix;
+
 @protocol ESRenderer <NSObject>
+
+- (void)setModelMatrix:(Matrix *)transform;
 
 - (void)render;
 - (void)beginRender;

@@ -111,6 +111,11 @@ static Engine * _sharedEngine = nil;
     }
 }
 
+- (void)setModelMatrix:(Matrix *)transform
+{
+	[glView setModelMatrix:transform];
+}
+
 - (void)mainLoop:(id)sender
 {
 	//Calculate time

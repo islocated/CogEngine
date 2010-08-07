@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
+@class Matrix;
 @class EAGLView;
 @class Scene;
 
@@ -32,10 +33,12 @@
 
 + (Engine *) sharedEngine;
 
-- (void) cleanup;
+- (void)cleanup;
 
-- (void) startAnimation;
-- (void) stopAnimation;
+- (void)startAnimation;
+- (void)stopAnimation;
+
+- (void)setModelMatrix:(Matrix *)transform; 
 
 @property (nonatomic, retain) EAGLView *glView;
 @property (nonatomic, retain) Scene *currentScene;

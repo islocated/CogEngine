@@ -11,6 +11,8 @@
 #import <OpenGLES/ES2/gl.h>
 #import <OpenGLES/ES2/glext.h>
 
+#import "Matrix.h"
+
 @interface ES2Renderer : NSObject <ESRenderer>
 {
 @private
@@ -25,6 +27,8 @@
 
     GLuint program;
 }
+
+- (void)setModelMatrix:(Matrix *)transform;
 
 - (void)render;
 - (void)beginRender;

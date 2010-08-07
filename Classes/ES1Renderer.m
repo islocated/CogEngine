@@ -7,6 +7,7 @@
 //
 
 #import "ES1Renderer.h"
+#import "Matrix.h"
 
 @implementation ES1Renderer
 
@@ -32,6 +33,13 @@
     }
 
     return self;
+}
+
+- (void)setModelMatrix:(Matrix *)transform
+{
+	glMatrixMode(GL_MODELVIEW);
+    glLoadIdentity();
+	glMultMatrixf(&[transform getMatrix].mat[0][0]);
 }
 
 - (void)beginRender

@@ -9,6 +9,7 @@
 #import "Sprite.h"
 
 #import "Matrix.h"
+#import "Engine.h"
 
 @implementation Sprite
 
@@ -39,20 +40,7 @@
 		vertices[11] = 1.0f;
 		//vertices[15] = 0.0f;
 		
-		/*
-		Matrix *projection = [[Matrix alloc] init];
-		//[projection zero];
-		//[projection translateWithX:-0.1f Y:-0.5f Z:-0.5f];
-		
-		float fov=60.0f; // in degrees
-		float aspect=1.3333f;
-		float znear=1.0f;
-		float zfar=1000.0f;
-		[projection perspectiveWithFOV:fov aspect:aspect ZNear:znear ZFar:zfar];
-				
-		[projection release];
-		 
-		 */
+		[transform translateWithX:-0.0f Y:-0.0f Z:-5.0f];
 	}
 	
 	return self;
@@ -65,17 +53,11 @@
 - (void)render:(NSObject *)dt{
 	NSLog(@"Sprite Render");
 	
+	[[Engine sharedEngine] setModelMatrix:transform];
 	
-	// Replace the implementation of this method to do your own custom drawing
-	static const GLfloat squareVertices[] = {
-        -0.5f, -0.33f,
-		0.5f, -0.33f,
-        -0.5f,  0.33f,
-		0.5f,  0.33f,
-    };
-	
-	
-	
+	float trans = (rand()%20 - 10)/ 1000.0f;
+	[transform translateWithX:trans Y:trans Z:trans];
+		
     static const GLubyte squareColors[] = {
         255, 255,   0, 255,
         0,   255, 255, 255,

@@ -13,10 +13,14 @@
 
 #define INITIAL_CAPACITY 10
 
+@class Matrix;
+
 @interface CoreObject : NSObject {
 	NSMutableArray * children;
 	
 	BOOL visible;
+	
+	Matrix *transform;
 }
 
 - (void)addChild:(id)child;
@@ -28,5 +32,7 @@
 - (void)visit:(SEL)action withObject:(NSObject *)object;
 
 @property (assign) BOOL visible;
+
+@property (nonatomic, retain) Matrix *transform;
 
 @end

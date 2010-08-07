@@ -59,6 +59,11 @@ enum {
     return self;
 }
 
+//TODO:Use multiplication to layer transforms on top of each other
+- (void)setModelMatrix:(Matrix *)transform
+{
+	glUniformMatrix4fv(uniforms[UNIFORM_MODELVIEWMATRIX], 1, FALSE, &[transform getMatrix].mat[0][0]);
+}
 
 - (void)beginRender
 {
@@ -105,17 +110,6 @@ enum {
 	glUniformMatrix4fv(uniforms[UNIFORM_PROJECTIONMATRIX], 1, FALSE, &[projection getMatrix].mat[0][0]);
 	[projection release];
 	
-	//static const GLfloat model[4][4] = {{1,0,0,0}, {0,1,0,0}, {0,0,1,0}, {0,0,0,1}};
-	
-	static float transx = 3.0f;
-	transx += 0.025f;
-	
-	//TODO:Model matrix needs to move to the sprite
-	Matrix *model = [[Matrix alloc] init];
-	//Z component is the camera coordinate, so we move it negatively to move the model positively
-	[model translateWithX:-0.0f Y:-0.0f Z:-transx];
-	glUniformMatrix4fv(uniforms[UNIFORM_MODELVIEWMATRIX], 1, FALSE, &[model getMatrix].mat[0][0]);
-	[model release];
 }
 
 - (void)render

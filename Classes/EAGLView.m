@@ -48,6 +48,11 @@
     return self;
 }
 
+- (void)setModelMatrix:(Matrix *)transform
+{
+	[renderer setModelMatrix:transform];
+}
+
 - (void)beginRender:(id)sender
 {
 	[renderer beginRender];
