@@ -8,7 +8,6 @@
 
 #import "Matrix.h"
 
-
 @implementation Matrix
 
 - (id)init
@@ -44,11 +43,11 @@
 	memset(mat.mat, 0, sizeof(mat.mat));
 }
 
-- (void)orthoWithLeft:(float)left right:(float)right bottom:(float)bottom top:(float)top nearZ:(float)nearZ farZ:(float)farZ
+- (void)orthoWithLeft:(cgfloat)left right:(cgfloat)right bottom:(cgfloat)bottom top:(cgfloat)top nearZ:(cgfloat)nearZ farZ:(cgfloat)farZ
 {
-    float       deltaX = right - left;
-    float       deltaY = top - bottom;
-    float       deltaZ = farZ - nearZ;
+    cgfloat       deltaX = right - left;
+    cgfloat       deltaY = top - bottom;
+    cgfloat       deltaZ = farZ - nearZ;
     
 	
     if ( (deltaX == 0.0f) || (deltaY == 0.0f) || (deltaZ == 0.0f) )
@@ -67,14 +66,14 @@
     //esMatrixMultiply(result, &ortho, result);
 }
 
-- (void)perspectiveWithFOV:(float)fov aspect:(float)aspect ZNear:(float)znear ZFar:(float)zfar
+- (void)perspectiveWithFOV:(cgfloat)fov aspect:(cgfloat)aspect ZNear:(cgfloat)znear ZFar:(cgfloat)zfar
 {
-	float tfov2 = tanf(fov * M_PI / 360.0f);
-	float tfov2_asp = tfov2/aspect;
-	float tfov2_inv = 1.0f/tfov2;
-	float npf = znear + zfar;
-	float nmf = znear - zfar;
-	float nf2 = 2.0f * znear * zfar;
+	cgfloat tfov2 = tanf(fov * M_PI / 360.0f);
+	cgfloat tfov2_asp = tfov2/aspect;
+	cgfloat tfov2_inv = 1.0f/tfov2;
+	cgfloat npf = znear + zfar;
+	cgfloat nmf = znear - zfar;
+	cgfloat nf2 = 2.0f * znear * zfar;
 	
 	[self zero];
 	
@@ -85,22 +84,21 @@
 	mat.mat[3][2] = nf2/nmf;
 }
 
-- (void)perspectiveWithFOVY:(float)fovy aspect:(float)aspect nearZ:(float)nearZ farZ:(float)farZ
+- (void)perspectiveWithFOVY:(cgfloat)fovy aspect:(cgfloat)aspect nearZ:(cgfloat)nearZ farZ:(cgfloat)farZ
 {
-	GLfloat frustumW, frustumH;
+	cgfloat frustumW, frustumH;
 	
 	frustumH = tanf( fovy / 360.0f * M_PI ) * nearZ;
 	frustumW = frustumH * aspect;
 	
 	[self frustumWithLeft:-frustumW right:frustumW bottom:-frustumH top:frustumH nearZ:nearZ farZ:farZ];
-	//-frustumW, frustumW, -frustumH, frustumH, nearZ, farZ );
 }
 
-- (void)frustumWithLeft:(float)left right:(float)right bottom:(float)bottom top:(float)top nearZ:(float)nearZ farZ:(float)farZ
+- (void)frustumWithLeft:(cgfloat)left right:(cgfloat)right bottom:(cgfloat)bottom top:(cgfloat)top nearZ:(cgfloat)nearZ farZ:(cgfloat)farZ
 {
-    float       deltaX = right - left;
-    float       deltaY = top - bottom;
-    float       deltaZ = farZ - nearZ;
+    cgfloat       deltaX = right - left;
+    cgfloat       deltaY = top - bottom;
+    cgfloat       deltaZ = farZ - nearZ;
     //ESMatrix    frust;
 	
     if ( (nearZ <= 0.0f) || (farZ <= 0.0f) ||
@@ -143,7 +141,7 @@
 	[result release];
 }
 
-- (void)translateWithX:(GLfloat)dx Y:(GLfloat)dy Z:(GLfloat)dz
+- (void)translateWithX:(cgfloat)dx Y:(cgfloat)dy Z:(cgfloat)dz
 {
 	//Matrix is represented as column order, thus translation vector is like this
 	mat.mat[3][0] += dx;

@@ -8,10 +8,9 @@
 
 #import "ESRenderer.h"
 
-#import <OpenGLES/ES2/gl.h>
-#import <OpenGLES/ES2/glext.h>
+#import "Constants.h"
 
-#import "Matrix.h"
+@class Matrix;
 
 @interface ES2Renderer : NSObject <ESRenderer>
 {
@@ -19,15 +18,17 @@
     EAGLContext *context;
 
     // The pixel dimensions of the CAEAGLLayer
-    GLint backingWidth;
-    GLint backingHeight;
+    cgint backingWidth;
+    cgint backingHeight;
 
     // The OpenGL ES names for the framebuffer and renderbuffer used to render to this view
-    GLuint defaultFramebuffer, colorRenderbuffer;
+    cguint defaultFramebuffer, colorRenderbuffer;
 
-    GLuint program;
+    cguint program;
 }
 
+
+- (void)drawVertices:(cgfloat *)vertices size:(cgint)size indices:(cgushort *)indices count:(cgint)count;
 - (void)setModelMatrix:(Matrix *)transform;
 
 - (void)render;

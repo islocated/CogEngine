@@ -8,8 +8,8 @@
 
 #import "ESRenderer.h"
 
-#import <OpenGLES/ES1/gl.h>
-#import <OpenGLES/ES1/glext.h>
+#import "Constants.h"
+
 
 @interface ES1Renderer : NSObject <ESRenderer>
 {
@@ -17,12 +17,16 @@
     EAGLContext *context;
 
     // The pixel dimensions of the CAEAGLLayer
-    GLint backingWidth;
-    GLint backingHeight;
+    cgint backingWidth;
+    cgint backingHeight;
 
     // The OpenGL ES names for the framebuffer and renderbuffer used to render to this view
-    GLuint defaultFramebuffer, colorRenderbuffer;
+    cguint defaultFramebuffer, colorRenderbuffer;
 }
+
+//TODO:standardize the units
+- (void)drawVertices:(cgfloat *)vertices size:(cgint)size indices:(cgushort *)indices count:(cgint)count;
+- (void)setModelMatrix:(Matrix *)transform;
 
 - (void)render;
 - (void)beginRender;

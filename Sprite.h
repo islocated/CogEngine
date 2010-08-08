@@ -12,8 +12,12 @@
 @interface Sprite : CoreObject {
 	CGRect bounds;
 	
-	GLfloat vertices[12];
-	GLfloat colors[8];
+	cgfloat vertices[12];
+	cgushort indices[6];
+	cgfloat colors[8];
+	
+	int indicesCount;
+	int verticesSize;
 }
 
 @property (nonatomic, assign) CGRect bounds;

@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
+#import "Constants.h"
+
 @class Matrix;
 @class EAGLView;
 @class Scene;
@@ -26,9 +28,16 @@
     NSTimer *animationTimer;
 	
 	
-	float dt;
+	cgfloat dt;
 	
 	Scene *currentScene;
+	
+	
+	cgfloat width;
+	cgfloat height;
+	
+	Matrix *projection;
+	Matrix *modelview;
 }
 
 + (Engine *) sharedEngine;
@@ -38,6 +47,7 @@
 - (void)startAnimation;
 - (void)stopAnimation;
 
+- (void)drawVertices:(cgfloat *)vertices size:(cgint)size indices:(cgushort *)indices count:(cgint)count;
 - (void)setModelMatrix:(Matrix *)transform; 
 
 @property (nonatomic, retain) EAGLView *glView;
@@ -46,7 +56,9 @@
 @property (readonly, nonatomic, getter=isAnimating) BOOL animating;
 @property (nonatomic) NSInteger animationFrameInterval;
 
-@property (readonly) float dt;
+@property (readonly) cgfloat dt;
+@property (assign) cgfloat width;
+@property (assign) cgfloat height;
 
 
 @end

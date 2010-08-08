@@ -48,6 +48,11 @@
     return self;
 }
 
+- (void)drawVertices:(cgfloat *)vertices size:(cgint)size indices:(cgushort *)indices count:(cgint)count
+{
+	[renderer drawVertices:vertices size:size indices:indices count:count];
+}
+
 - (void)setModelMatrix:(Matrix *)transform
 {
 	[renderer setModelMatrix:transform];

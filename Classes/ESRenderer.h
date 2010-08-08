@@ -15,6 +15,7 @@
 
 @protocol ESRenderer <NSObject>
 
+- (void)drawVertices:(float *)vertices size:(int)size indices:(unsigned short *)indices count:(int)count;
 - (void)setModelMatrix:(Matrix *)transform;
 
 - (void)render;

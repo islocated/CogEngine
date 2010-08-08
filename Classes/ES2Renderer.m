@@ -8,7 +8,11 @@
 
 #import "ES2Renderer.h"
 
+#import <OpenGLES/ES2/gl.h>
+#import <OpenGLES/ES2/glext.h>
+
 #import "Matrix.h"
+#import "Engine.h"
 
 // uniform index
 enum {
@@ -17,7 +21,7 @@ enum {
     UNIFORM_TRANSLATE,
     NUM_UNIFORMS
 };
-GLint uniforms[NUM_UNIFORMS];
+cgint uniforms[NUM_UNIFORMS];
 
 // attribute index
 enum {
@@ -59,6 +63,14 @@ enum {
     return self;
 }
 
+- (void)drawVertices:(cgfloat *)vertices size:(cgint)size indices:(cgushort *)indices count:(cgint)count
+{
+	glVertexAttribPointer(ATTRIB_VERTEX, size, GL_FLOAT, 0, 0, vertices);
+    glEnableVertexAttribArray(ATTRIB_VERTEX);
+    
+	glDrawElements(GL_TRIANGLES, count, GL_UNSIGNED_SHORT, indices);
+}
+
 //TODO:Use multiplication to layer transforms on top of each other
 - (void)setModelMatrix:(Matrix *)transform
 {
@@ -90,10 +102,10 @@ enum {
 	//static const GLfloat projection[4][4] = {{1,0,0,0}, {0,1,0,0}, {0,0,1,0}, {0,0,0,1}};
 	
 	Matrix *projection = [[Matrix alloc] init];
-	float fov=60.0f; // in degrees
-	float aspect=(float)backingWidth/(float)backingHeight; //1.3333f;
-	float znear=1.0f;
-	float zfar=100.0f;
+	cgfloat fov=60.0f; // in degrees
+	cgfloat aspect=(cgfloat)backingWidth/(cgfloat)backingHeight; //1.3333f;
+	cgfloat znear=1.0f;
+	cgfloat zfar=100.0f;
 	
 	[projection perspectiveWithFOVY:fov aspect:aspect nearZ:znear farZ:zfar];
 	//[projection perspectiveWithFOV:fov aspect:aspect ZNear:znear ZFar:zfar];
@@ -333,6 +345,9 @@ enum {
     glGetRenderbufferParameteriv(GL_RENDERBUFFER, GL_RENDERBUFFER_WIDTH, &backingWidth);
     glGetRenderbufferParameteriv(GL_RENDERBUFFER, GL_RENDERBUFFER_HEIGHT, &backingHeight);
 
+	[Engine sharedEngine].width = backingWidth;
+	[Engine sharedEngine].height = backingHeight;
+	
     if (glCheckFramebufferStatus(GL_FRAMEBUFFER) != GL_FRAMEBUFFER_COMPLETE)
     {
         NSLog(@"Failed to make complete framebuffer object %x", glCheckFramebufferStatus(GL_FRAMEBUFFER));

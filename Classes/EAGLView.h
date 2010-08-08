@@ -11,6 +11,8 @@
 
 #import "ESRenderer.h"
 
+#import "Constants.h"
+
 @class Matrix;
 
 // This class wraps the CAEAGLLayer from CoreAnimation into a convenient UIView subclass.
@@ -24,6 +26,7 @@
 
 - (void)drawView:(id)sender;
 
+- (void)drawVertices:(cgfloat *)vertices size:(cgint)size indices:(cgushort *)indices count:(cgint)count;
 - (void)setModelMatrix:(Matrix *)transform;
 
 - (void)beginRender:(id)sender;

@@ -7,7 +7,12 @@
 //
 
 #import "ES1Renderer.h"
+
+#import <OpenGLES/ES1/gl.h>
+#import <OpenGLES/ES1/glext.h>
+
 #import "Matrix.h"
+#import "Engine.h"
 
 @implementation ES1Renderer
 
@@ -33,6 +38,14 @@
     }
 
     return self;
+}
+
+- (void)drawVertices:(cgfloat *)vertices size:(cgint)size indices:(cgushort *)indices count:(cgint)count
+{
+	glVertexPointer(size, GL_FLOAT, 0, vertices);
+    glEnableClientState(GL_VERTEX_ARRAY);
+    
+	glDrawElements(GL_TRIANGLES, count, GL_UNSIGNED_SHORT, indices);
 }
 
 - (void)setModelMatrix:(Matrix *)transform
@@ -109,6 +122,9 @@
     glGetRenderbufferParameterivOES(GL_RENDERBUFFER_OES, GL_RENDERBUFFER_WIDTH_OES, &backingWidth);
     glGetRenderbufferParameterivOES(GL_RENDERBUFFER_OES, GL_RENDERBUFFER_HEIGHT_OES, &backingHeight);
 
+	[Engine sharedEngine].width = backingWidth;
+	[Engine sharedEngine].height = backingHeight;
+	
     if (glCheckFramebufferStatusOES(GL_FRAMEBUFFER_OES) != GL_FRAMEBUFFER_COMPLETE_OES)
     {
         NSLog(@"Failed to make complete framebuffer object %x", glCheckFramebufferStatusOES(GL_FRAMEBUFFER_OES));

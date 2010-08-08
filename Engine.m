@@ -9,6 +9,7 @@
 #import "Engine.h"
 #import "EAGLView.h"
 #import "Scene.h"
+#import "Matrix.h"
 
 static Engine * _sharedEngine = nil;
 
@@ -21,6 +22,8 @@ static Engine * _sharedEngine = nil;
 @dynamic animationFrameInterval;
 
 @synthesize dt;
+@synthesize width;
+@synthesize height;
 
 + (Engine *)sharedEngine {
 	if (!_sharedEngine) {
@@ -45,12 +48,21 @@ static Engine * _sharedEngine = nil;
 		NSString *currSysVer = [[UIDevice currentDevice] systemVersion];
 		if ([currSysVer compare:reqSysVer options:NSNumericSearch] != NSOrderedAscending)
 			displayLinkSupported = TRUE;
+		
+		
+		//Engine transformation matrices
+		projection = [[Matrix alloc] init];
+		
+		modelview = [[Matrix alloc] init];
 	}
 	
 	return self;
 }
 
 - (void)dealloc {
+	[projection release];
+	[modelview release];
+	
 	[super dealloc];
 }
 
@@ -109,6 +121,11 @@ static Engine * _sharedEngine = nil;
 		
         animating = TRUE;
     }
+}
+
+- (void)drawVertices:(cgfloat *)vertices size:(cgint)size indices:(cgushort *)indices count:(cgint)count
+{
+	[glView drawVertices:vertices size:size indices:indices count:count];
 }
 
 - (void)setModelMatrix:(Matrix *)transform

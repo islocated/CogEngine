@@ -8,7 +8,6 @@
 
 #import "Scene.h"
 
-
 @implementation Scene
 
 - (id)init

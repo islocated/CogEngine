@@ -19,26 +19,23 @@
 {
 	if ((self = [super init])) {
 		
-		vertices[0] = 0.0f;
-		vertices[1] = 0.0f;
-		vertices[2] = 1.0f;
-		//vertices[3] = 0.0f;
+		cgfloat _vertices[] = {
+			0.0f, 0.0f, 1.0f,
+			1.0f, 0.0f, 1.0f,
+			1.0f, 1.0f, 1.0f,
+			0.0f, 1.0f, 1.0f
+		};
 		
+		memcpy(vertices, _vertices, sizeof(_vertices));
+		verticesSize = 3;	//size is number of components of vertices
 		
-		vertices[3] = 1.0f;
-		vertices[4] = 0.0f;
-		vertices[5] = 1.0f;
-		//vertices[7] = 0.0f;
+		cgushort _indices[] = {
+			0,3,1,
+			1,3,2
+		};
 		
-		vertices[6] = 1.0f;
-		vertices[7] = 1.0f;
-		vertices[8] = 1.0f;
-		//vertices[11] = 0.0f;
-		
-		vertices[9] = 0.0f;
-		vertices[10] = 1.0f;
-		vertices[11] = 1.0f;
-		//vertices[15] = 0.0f;
+		memcpy(indices, _indices, sizeof(_indices));
+		indicesCount = sizeof(indices)/sizeof(cgushort);
 		
 		[transform translateWithX:-0.0f Y:-0.0f Z:-5.0f];
 	}
@@ -48,6 +45,9 @@
 
 - (void)update:(NSObject *)dt{
 	NSLog(@"Sprite Update");
+	
+	float trans = (rand()%20 - 10)/ 1000.0f;
+	[transform translateWithX:trans Y:trans Z:trans];
 }
 
 - (void)render:(NSObject *)dt{
@@ -55,40 +55,7 @@
 	
 	[[Engine sharedEngine] setModelMatrix:transform];
 	
-	float trans = (rand()%20 - 10)/ 1000.0f;
-	[transform translateWithX:trans Y:trans Z:trans];
-		
-    static const GLubyte squareColors[] = {
-        255, 255,   0, 255,
-        0,   255, 255, 255,
-        0,     0,   0,   0,
-        255, 255,   0, 255,
-        0,   255, 255, 255,
-        0,     0,   0,   0
-    };
-	
-	static const GLushort indices[] = {
-        0,3,1,
-		1,3,2
-    };
-	
-    static float transY = 100.0f;
-	
-    // Update uniform value
-    glUniform1f(0, (GLfloat)transY);
-    transY += 0.075f;	
-	
-    // Update attribute values
-    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, vertices);
-    glEnableVertexAttribArray(0);
-    glVertexAttribPointer(1, 4, GL_UNSIGNED_BYTE, 1, 0, squareColors);
-    glEnableVertexAttribArray(1);
-	
-    // Draw
-    //glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
-	
-	//
-	glDrawElements (GL_TRIANGLES, 6, GL_UNSIGNED_SHORT, indices );
+	[[Engine sharedEngine] drawVertices:vertices size:verticesSize indices:indices count:indicesCount];
 }
 
 

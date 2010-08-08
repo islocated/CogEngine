@@ -8,12 +8,10 @@
 
 #import <Foundation/Foundation.h>
 
-#import <OpenGLES/ES2/gl.h>
-#import <OpenGLES/ES2/glext.h>
-
+#include "Constants.h"
 
 typedef struct matrix {
-	GLfloat mat[4][4];
+	cgfloat mat[4][4];
 } CMatrix;
 
 
@@ -25,18 +23,16 @@ typedef struct matrix {
 - (void)setMatrix:(Matrix *)matrix;
 - (CMatrix)getMatrix;
 
+- (void)orthoWithLeft:(cgfloat)left right:(cgfloat)right bottom:(cgfloat)bottom top:(cgfloat)top nearZ:(cgfloat)nearZ farZ:(cgfloat)farZ;
+- (void)perspectiveWithFOV:(cgfloat)fov aspect:(cgfloat)aspect ZNear:(cgfloat)znear ZFar:(cgfloat)zfar;
 
-- (void)orthoWithLeft:(float)left right:(float)right bottom:(float)bottom top:(float)top nearZ:(float)nearZ farZ:(float)farZ;
-- (void)perspectiveWithFOV:(float)fov aspect:(float)aspect ZNear:(float)znear ZFar:(float)zfar;
-
-
-- (void)perspectiveWithFOVY:(float)fovy aspect:(float)aspect nearZ:(float)nearZ farZ:(float)farZ;
-- (void)frustumWithLeft:(float)left right:(float)right bottom:(float)bottom top:(float)top nearZ:(float)nearZ farZ:(float)farZ;
+- (void)perspectiveWithFOVY:(cgfloat)fovy aspect:(cgfloat)aspect nearZ:(cgfloat)nearZ farZ:(cgfloat)farZ;
+- (void)frustumWithLeft:(cgfloat)left right:(cgfloat)right bottom:(cgfloat)bottom top:(cgfloat)top nearZ:(cgfloat)nearZ farZ:(cgfloat)farZ;
 
 - (void)identity;
 - (void)zero;
 - (void)multiply:(Matrix *)matrix;
 
-- (void)translateWithX:(GLfloat)dx Y:(GLfloat)dy Z:(GLfloat)dz;
+- (void)translateWithX:(cgfloat)dx Y:(cgfloat)dy Z:(cgfloat)dz;
 
 @end
