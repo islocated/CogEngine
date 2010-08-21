@@ -11,6 +11,8 @@
 #import "Scene.h"
 #import "Matrix.h"
 
+#import "Texture.h"
+
 static Engine * _sharedEngine = nil;
 
 @implementation Engine
@@ -62,6 +64,8 @@ static Engine * _sharedEngine = nil;
 - (void)dealloc {
 	[projection release];
 	[modelview release];
+	
+	[texture release];
 	
 	[super dealloc];
 }
@@ -130,7 +134,26 @@ static Engine * _sharedEngine = nil;
 
 - (void)setModelMatrix:(Matrix *)transform
 {
+	[modelview setMatrix:transform];
 	[glView setModelMatrix:transform];
+}
+
+- (void)multiplyModelMatrix:(Matrix *)transform
+{
+	[modelview multiply:transform];
+	[glView setModelMatrix:modelview];
+}
+
+- (void)setTexture:(NSString *)aTexture
+{
+	if (texture == aTexture)
+		return;
+	
+	[texture release];
+	texture = [aTexture copy];
+	
+	//TODO:get the engine to load it by using the EAGLView
+	[[Texture sharedTexture] getTexture:texture];
 }
 
 - (void)mainLoop:(id)sender

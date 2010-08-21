@@ -19,6 +19,7 @@
 		28FD14FE0DC6FC130079059D /* EAGLView.m in Sources */ = {isa = PBXBuildFile; fileRef = 28FD14FD0DC6FC130079059D /* EAGLView.m */; };
 		28FD15000DC6FC520079059D /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28FD14FF0DC6FC520079059D /* OpenGLES.framework */; };
 		28FD15080DC6FC5B0079059D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28FD15070DC6FC5B0079059D /* QuartzCore.framework */; };
+		BA9C856E12201C6D0093E9EC /* Texture.m in Sources */ = {isa = PBXBuildFile; fileRef = BA9C856D12201C6D0093E9EC /* Texture.m */; };
 		BACE3A7E12046D4A002183B1 /* Sprite.m in Sources */ = {isa = PBXBuildFile; fileRef = BACE3A7D12046D4A002183B1 /* Sprite.m */; };
 		BACE3BF112051AAD002183B1 /* Matrix.m in Sources */ = {isa = PBXBuildFile; fileRef = BACE3BF012051AAD002183B1 /* Matrix.m */; };
 		BAF0DA4311FC9C0200D95E32 /* Game.m in Sources */ = {isa = PBXBuildFile; fileRef = BAF0DA4211FC9C0200D95E32 /* Game.m */; };
@@ -53,6 +54,8 @@
 		32CA4F630368D1EE00C91783 /* CogEngine_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CogEngine_Prefix.pch; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* CogEngine-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "CogEngine-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
 		BA3449F2120DA0440019C672 /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
+		BA9C856C12201C6D0093E9EC /* Texture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Texture.h; sourceTree = "<group>"; };
+		BA9C856D12201C6D0093E9EC /* Texture.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Texture.m; sourceTree = "<group>"; };
 		BACE3A7C12046D4A002183B1 /* Sprite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Sprite.h; sourceTree = "<group>"; };
 		BACE3A7D12046D4A002183B1 /* Sprite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Sprite.m; sourceTree = "<group>"; };
 		BACE3BEF12051AAD002183B1 /* Matrix.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Matrix.h; sourceTree = "<group>"; };
@@ -199,6 +202,8 @@
 				BACE3A7C12046D4A002183B1 /* Sprite.h */,
 				BACE3A7D12046D4A002183B1 /* Sprite.m */,
 				BA3449F2120DA0440019C672 /* Constants.h */,
+				BA9C856C12201C6D0093E9EC /* Texture.h */,
+				BA9C856D12201C6D0093E9EC /* Texture.m */,
 			);
 			name = Engine;
 			sourceTree = "<group>";
@@ -296,6 +301,7 @@
 				BAF0DCCD12026DCB00D95E32 /* CoreObject.m in Sources */,
 				BACE3A7E12046D4A002183B1 /* Sprite.m in Sources */,
 				BACE3BF112051AAD002183B1 /* Matrix.m in Sources */,
+				BA9C856E12201C6D0093E9EC /* Texture.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

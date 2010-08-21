@@ -24,7 +24,6 @@
     cguint defaultFramebuffer, colorRenderbuffer;
 }
 
-//TODO:standardize the units
 - (void)drawVertices:(cgfloat *)vertices size:(cgint)size indices:(cgushort *)indices count:(cgint)count;
 - (void)setModelMatrix:(Matrix *)transform;
 

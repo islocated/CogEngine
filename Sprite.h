@@ -18,8 +18,11 @@
 	
 	int indicesCount;
 	int verticesSize;
+	
+	NSString *texture;
 }
 
 @property (nonatomic, assign) CGRect bounds;
+@property (nonatomic, retain) NSString *texture;
 
 @end

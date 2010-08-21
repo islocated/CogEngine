@@ -14,6 +14,7 @@
 @implementation Sprite
 
 @synthesize bounds;
+@synthesize texture;
 
 - (id)init
 {
@@ -54,6 +55,8 @@
 	NSLog(@"Sprite Render");
 	
 	[[Engine sharedEngine] setModelMatrix:transform];
+	
+	[[Engine sharedEngine] setTexture:texture];
 	
 	[[Engine sharedEngine] drawVertices:vertices size:verticesSize indices:indices count:indicesCount];
 }

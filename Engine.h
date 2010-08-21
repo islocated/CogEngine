@@ -38,6 +38,8 @@
 	
 	Matrix *projection;
 	Matrix *modelview;
+	
+	NSString *texture;
 }
 
 + (Engine *) sharedEngine;
@@ -48,7 +50,10 @@
 - (void)stopAnimation;
 
 - (void)drawVertices:(cgfloat *)vertices size:(cgint)size indices:(cgushort *)indices count:(cgint)count;
-- (void)setModelMatrix:(Matrix *)transform; 
+- (void)setModelMatrix:(Matrix *)transform;
+- (void)multiplyModelMatrix:(Matrix *)transform;
+
+- (void)setTexture:(NSString *)texture;
 
 @property (nonatomic, retain) EAGLView *glView;
 @property (nonatomic, retain) Scene *currentScene;
